@@ -70,7 +70,6 @@
             margin-bottom: 10px;
             background: linear-gradient(45deg, var(--nepal-red), var(--nepal-blue));
             -webkit-background-sclip: text;
-            -webkit-text-fill-color: transparent;
             line-height: 1.3;
         }
         
