@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribhuvan University GPA Calculator - Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>    
+    <div class="container">
+        <header>
+            <div class="tu-logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>Tribhuvan University GPA Calculator</h1>
+            <p class="subtitle">Calculate your GPA, grade, and US equivalent for all Tribhuvan University programs. Designed for Nepali students by Nepali developers.</p>
+        </header>
+        
+        <div class="calculator-container">
+            <div class="calculator-card">
+                <div class="card-title">
+                    <i class="fas fa-calculator"></i>
+                    <h2>GPA Calculator</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label for="grading-system">Select Grading System:</label>
+                    <select id="grading-system">
+                        <option value="mostCommon">Most Common</option>
+                        <option value="secondaryTech">Secondary School Technical</option>
+                        <option value="secondary2016">Secondary School (2016)</option>
+                        <option value="universityLevel">University Level</option>
+                        <option value="passAt50">University Pass at 50</option>
+                        <option value="tuUndergrad" selected>Tribhuvan University Undergraduate</option>
+                        <option value="agriculture">Agriculture and Forestry</option>
+                        <option value="tuGraduate40">Tribhuvan Graduate (Pass at 40)</option>
+                        <option value="tuBBA">Tribhuvan University (BBA)</option>
+                        <option value="tuMaster">Tribhuvan University (Master)</option>
+                        <option value="tuUndergrad35">TU Undergraduate (Pass at 35)</option>
+                        <option value="tuUndergrad40">TU Undergraduate (Pass at 40)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="percentage">Enter Your Percentage:</label>
+                    <input type="number" id="percentage" min="0" max="100" step="0.01" placeholder="Enter percentage (0-100)">
+                </div>
+                
+                <button class="btn" id="calculate-btn">
+                    <i class="fas fa-calculator"></i> Calculate GPA & Grade
+                </button>
+                
+                <div class="result-container" id="result">
+                    <h3>Your Result:</h3>
+                    <div class="gpa-value" id="gpa-value">0.0</div>
+                    <div class="grade-description" id="grade-description">Grade Description</div>
+                    <div class="us-grade" id="us-grade">US Grade</div>
+                </div>
+            </div>
+            
+            <div class="calculator-card">
+                <div class="card-title">
+                    <i class="fas fa-info-circle"></i>
+                    <h2>Grading System Information</h2>
+                </div>
+                
+                <div class="info-card">
+                    <h3 id="current-system">Tribhuvan University Undergraduate</h3>
+                    <table class="grading-system" id="grading-table">
+                        <thead>
+                            <tr>
+                                <th>Scale</th>
+                                <th>Grade Description</th>
+                                <th>Division</th>
+                                <th>US Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>80.00 - 100.00</td>
+                                <td>Distinction</td>
+                                <td></td>
+                                <td>A+</td>
+                            </tr>
+                            <tr>
+                                <td>65.00 - 79.99</td>
+                                <td>First Division</td>
+                                <td></td>
+                                <td>A</td>
+                            </tr>
+                            <tr>
+                                <td>50.00 - 64.99</td>
+                                <td>Second Division</td>
+                                <td></td>
+                                <td>B</td>
+                            </tr>
+                            <tr>
+                                <td>40.00 - 49.99</td>
+                                <td>Pass</td>
+                                <td></td>
+                                <td>C</td>
+                            </tr>
+                            <tr>
+                                <td>0.00 - 39.99</td>
+                                <td>Fail</td>
+                                <td></td>
+                                <td>F</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Coffee Donation Section -->
+        <div class="coffee-section">
+            <h2 class="coffee-title">
+                <i class="fas fa-mug-hot"></i> Support Our Work
+            </h2>
+            <p class="coffee-desc">
+                If you found this GPA calculator helpful, consider buying us a coffee! Your support helps us maintain and improve this free tool for Nepali students. Every contribution makes a difference in keeping educational resources accessible to all.
+            </p>
+            
+            <div class="donation-options">
+                <div class="donation-card" data-amount="50">
+                    <div class="coffee-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="donation-amount">NPR 50</div>
+                    <div class="donation-text">One coffee</div>
+                </div>
+                
+                <div class="donation-card" data-amount="100">
+                    <div class="coffee-icon">
+                        <i class="fas fa-coffee"></i>
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="donation-amount">NPR 100</div>
+                    <div class="donation-text">Two coffees</div>
+                </div>
+                
+                <div class="donation-card" data-amount="200">
+                    <div class="coffee-icon">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="donation-amount">NPR 200</div>
+                    <div class="donation-text">Special coffee</div>
+                </div>
+                
+                <div class="donation-card" data-amount="500">
+                    <div class="coffee-icon">
+                        <i class="fas fa-beer"></i>
+                    </div>
+                    <div class="donation-amount">NPR 500</div>
+                    <div class="donation-text">Coffee for the team</div>
+                </div>
+            </div>
+            
+            <button class="donate-btn" id="donate-btn">
+                <i class="fas fa-gift"></i> Donate Now
+            </button>
+            
+            <div class="donation-counter">
+                <span id="coffee-count">127</span> coffees donated by Nepali students this month!
+            </div>
+        </div>
+        
+        <!-- Floating coffee button -->
+        <div class="coffee-tab" id="coffee-tab">
+            <i class="fas fa-mug-hot"></i>
+        </div>
+        
+        <!-- Payment Modal -->
+        <div class="payment-modal" id="payment-modal">
+            <div class="payment-content">
+                <span class="close-payment" id="close-payment">&times;</span>
+                <div class="payment-header">
+                    <h2>Donate via Mobile Payment</h2>
+                    <p>Select your preferred payment method</p>
+                </div>
+                
+                <div class="payment-options">
+                    <button class="payment-btn esewa-btn" id="esewa-btn">
+                        <i class="fas fa-mobile-alt"></i> eSewa
+                    </button>
+                    <button class="payment-btn khalti-btn" id="khalti-btn">
+                        <i class="fas fa-wallet"></i> Khalti
+                    </button>
+                </div>
+                
+                <!-- eSewa QR Code -->
+                <div class="qr-container esewa-qr" id="esewa-qr">
+                    <div class="qr-image-container">
+                        <img src="./img/esewa.jpg" alt="eSewa QR Code" class="qr-image">
+                    </div>
+                    <div class="payment-instructions">
+                        <p><strong>How to pay:</strong> Open eSewa app → Tap Scan QR → Scan this code → Enter NPR <span id="esewa-amount">50</span> → Confirm payment</p>
+                    </div>
+                </div>
+                
+                <!-- Khalti QR Code -->
+                <div class="qr-container khalti-qr" id="khalti-qr">
+                    <div class="qr-image-container">
+                        <img src="./img/khalti.jpg" alt="Khalti QR Code" class="qr-image">
+                    </div>
+                    <div class="payment-instructions">
+                        <p><strong>How to pay:</strong> Open Khalti app → Tap Scan → Scan this code → Enter NPR <span id="khalti-amount">50</span> → Confirm payment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 TheBipinBlog All Right Reserved | Made with ❤️ for Nepali Students</p>
+            <p class="footer-note">This tool is provided free of charge. Your donations help us maintain and improve it for all students.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Grading system data
+        const gradingSystems = {
+            mostCommon: {
+                name: "Most Common",
+                grades: [
+                    { min: 80, max: 100, gradeDesc: "Distinction", division: "Division I", usGrade: "A+", gpa: 4.0 },
+                    { min: 60, max: 79.99, gradeDesc: "", division: "Division I", usGrade: "A", gpa: 3.6 },
+                    { min: 46, max: 59.99, gradeDesc: "Merit", division: "Division II", usGrade: "B", gpa: 3.0 },
+                    { min: 32, max: 45.99, gradeDesc: "Pass", division: "Division III", usGrade: "C", gpa: 2.0 },
+                    { min: 0, max: 31.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            secondaryTech: {
+                name: "Secondary School Technical",
+                grades: [
+                    { min: 80, max: 100, gradeDesc: "Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 65, max: 79.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 50, max: 64.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 40, max: 49.99, gradeDesc: "Pass Division", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 0, max: 39.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            secondary2016: {
+                name: "Secondary School (Effective 2016)",
+                grades: [
+                    { min: 90, max: 100, gradeDesc: "Outstanding", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 80, max: 89.99, gradeDesc: "Excellent", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 70, max: 79.99, gradeDesc: "Very Good", division: "", usGrade: "B+", gpa: 3.2 },
+                    { min: 60, max: 69.99, gradeDesc: "Good", division: "", usGrade: "B", gpa: 2.8 },
+                    { min: 50, max: 59.99, gradeDesc: "Above Average", division: "", usGrade: "C+", gpa: 2.4 },
+                    { min: 40, max: 49.99, gradeDesc: "Average", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 30, max: 39.99, gradeDesc: "Below Average", division: "", usGrade: "D+", gpa: 1.8 },
+                    { min: 20, max: 29.99, gradeDesc: "Above Insufficient", division: "", usGrade: "D", gpa: 1.6 },
+                    { min: 0, max: 19.99, gradeDesc: "Insufficient", division: "", usGrade: "F", gpa: 0.8 }
+                ]
+            },
+            universityLevel: {
+                name: "University Level",
+                grades: [
+                    { min: 90, max: 100, gradeDesc: "Outstanding", division: "", usGrade: "A", gpa: 4.0 },
+                    { min: 85, max: 89.99, gradeDesc: "Excellent", division: "", usGrade: "A-", gpa: 3.7 },
+                    { min: 80, max: 84.99, gradeDesc: "Very Good", division: "", usGrade: "B+", gpa: 3.3 },
+                    { min: 75, max: 79.99, gradeDesc: "Good", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 70, max: 74.99, gradeDesc: "Fair", division: "", usGrade: "B-", gpa: 2.7 },
+                    { min: 65, max: 69.99, gradeDesc: "Fair", division: "", usGrade: "C+", gpa: 2.3 },
+                    { min: 60, max: 64.99, gradeDesc: "Fair", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 55, max: 59.99, gradeDesc: "Poor", division: "", usGrade: "C-", gpa: 1.7 },
+                    { min: 50, max: 54.99, gradeDesc: "Poor", division: "", usGrade: "D+", gpa: 1.3 },
+                    { min: 45, max: 49.99, gradeDesc: "Poor", division: "", usGrade: "D", gpa: 1.0 },
+                    { min: 0, max: 44.99, gradeDesc: "Failure", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            passAt50: {
+                name: "University Pass at 50",
+                grades: [
+                    { min: 75, max: 100, gradeDesc: "Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 65, max: 74.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 50, max: 64.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 0, max: 49.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            tuUndergrad: {
+                name: "Tribhuvan University Undergraduate",
+                grades: [
+                    { min: 80, max: 100, gradeDesc: "Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 65, max: 79.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 50, max: 64.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 40, max: 49.99, gradeDesc: "Pass", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 0, max: 39.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            agriculture: {
+                name: "Agriculture and Forestry University",
+                grades: [
+                    { min: 80, max: 100, gradeDesc: "Excellent", division: "", usGrade: "A", gpa: 4.0 },
+                    { min: 65, max: 79.99, gradeDesc: "Good", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 50, max: 64.99, gradeDesc: "Fair", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 40, max: 49.99, gradeDesc: "Poor", division: "", usGrade: "D", gpa: 1.0 },
+                    { min: 0, max: 39.99, gradeDesc: "", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            tuGraduate40: {
+                name: "Tribhuvan Graduate (Pass at 40)",
+                grades: [
+                    { min: 75, max: 100, gradeDesc: "Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 60, max: 74.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 50, max: 59.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 40, max: 49.99, gradeDesc: "Pass", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 0, max: 39.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            tuBBA: {
+                name: "Tribhuvan University (BBA)",
+                grades: [
+                    { min: 80, max: 100, gradeDesc: "First Division with Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 65, max: 79.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 50, max: 64.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 40, max: 49.99, gradeDesc: "Pass Division", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 0, max: 39.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            tuMaster: {
+                name: "Tribhuvan University (Master)",
+                grades: [
+                    { min: 80, max: 100, gradeDesc: "Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 65, max: 79.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 50, max: 64.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 0, max: 49.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            tuUndergrad35: {
+                name: "Tribhuvan University Undergraduate (Pass at 35)",
+                grades: [
+                    { min: 75, max: 100, gradeDesc: "Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 60, max: 74.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 45, max: 59.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 35, max: 44.99, gradeDesc: "Pass Division", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 0, max: 34.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            },
+            tuUndergrad40: {
+                name: "Tribhuvan University Undergraduate (Pass at 40)",
+                grades: [
+                    { min: 80, max: 100, gradeDesc: "Distinction", division: "", usGrade: "A+", gpa: 4.0 },
+                    { min: 70, max: 79.99, gradeDesc: "First Division", division: "", usGrade: "A", gpa: 3.6 },
+                    { min: 55, max: 69.99, gradeDesc: "Second Division", division: "", usGrade: "B", gpa: 3.0 },
+                    { min: 40, max: 54.99, gradeDesc: "Pass Division", division: "", usGrade: "C", gpa: 2.0 },
+                    { min: 0, max: 39.99, gradeDesc: "Fail", division: "", usGrade: "F", gpa: 0.0 }
+                ]
+            }
+        };
+
+        // DOM elements
+        const gradingSystemSelect = document.getElementById('grading-system');
+        const percentageInput = document.getElementById('percentage');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resultContainer = document.getElementById('result');
+        const gpaValue = document.getElementById('gpa-value');
+        const gradeDescription = document.getElementById('grade-description');
+        const usGrade = document.getElementById('us-grade');
+        const currentSystem = document.getElementById('current-system');
+        const gradingTable = document.getElementById('grading-table');
+        const coffeeTab = document.getElementById('coffee-tab');
+        const donateBtn = document.getElementById('donate-btn');
+        const coffeeCount = document.getElementById('coffee-count');
+        const donationCards = document.querySelectorAll('.donation-card');
+        const paymentModal = document.getElementById('payment-modal');
+        const closePayment = document.getElementById('close-payment');
+        const esewaBtn = document.getElementById('esewa-btn');
+        const khaltiBtn = document.getElementById('khalti-btn');
+        const esewaQr = document.getElementById('esewa-qr');
+        const khaltiQr = document.getElementById('khalti-qr');
+        const esewaAmount = document.getElementById('esewa-amount');
+        const khaltiAmount = document.getElementById('khalti-amount');
+
+        // Initialize coffee donation counter
+        let coffeeCounter = 127;
+        let selectedAmount = 50;
+
+        // Update grading table when system changes
+        gradingSystemSelect.addEventListener('change', function() {
+            const systemKey = this.value;
+            const system = gradingSystems[systemKey];
+            
+            // Update current system name
+            currentSystem.textContent = system.name;
+            
+            // Clear table body
+            const tbody = gradingTable.querySelector('tbody');
+            tbody.innerHTML = '';
+            
+            // Add new rows
+            system.grades.forEach(grade => {
+                const row = document.createElement('tr');
+                
+                // Scale column
+                const scaleCell = document.createElement('td');
+                scaleCell.textContent = `${grade.min} - ${grade.max}`;
+                row.appendChild(scaleCell);
+                
+                // Grade description
+                const descCell = document.createElement('td');
+                descCell.textContent = grade.gradeDesc;
+                row.appendChild(descCell);
+                
+                // Division
+                const divCell = document.createElement('td');
+                divCell.textContent = grade.division || '-';
+                row.appendChild(divCell);
+                
+                // US Grade
+                const usCell = document.createElement('td');
+                usCell.textContent = grade.usGrade;
+                row.appendChild(usCell);
+                
+                tbody.appendChild(row);
+            });
+        });
+
+        // Calculate GPA
+        calculateBtn.addEventListener('click', function() {
+            const percentage = parseFloat(percentageInput.value);
+            
+            if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+                alert('Please enter a valid percentage between 0 and 100');
+                return;
+            }
+            
+            const systemKey = gradingSystemSelect.value;
+            const system = gradingSystems[systemKey];
+            const grade = system.grades.find(g => percentage >= g.min && percentage <= g.max);
+            
+            if (grade) {
+                gpaValue.textContent = grade.gpa.toFixed(1);
+                gradeDescription.textContent = grade.gradeDesc || grade.usGrade;
+                usGrade.textContent = grade.usGrade;
+                
+                // Set color based on grade
+                if (grade.usGrade === 'F') {
+                    gpaValue.style.color = 'var(--danger)';
+                } else if (grade.usGrade.includes('A') || grade.usGrade.includes('B')) {
+                    gpaValue.style.color = 'var(--success)';
+                } else {
+                    gpaValue.style.color = 'var(--warning)';
+                }
+                
+                resultContainer.style.display = 'block';
+            } else {
+                alert('Could not determine grade for the given percentage');
+            }
+        });
+
+        // Coffee donation functionality
+        coffeeTab.addEventListener('click', function() {
+            document.querySelector('.coffee-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+        
+        // Select donation amount
+        donationCards.forEach(card => {
+            card.addEventListener('click', function() {
+                donationCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedAmount = parseInt(this.getAttribute('data-amount'));
+            });
+        });
+        
+        // Donate button - open payment modal
+        donateBtn.addEventListener('click', function() {
+            paymentModal.classList.add('active');
+            // Hide any visible QR codes
+            esewaQr.style.display = 'none';
+            khaltiQr.style.display = 'none';
+            // Update amounts in modal
+            esewaAmount.textContent = selectedAmount;
+            khaltiAmount.textContent = selectedAmount;
+        });
+        
+        // Close payment modal
+        closePayment.addEventListener('click', function() {
+            paymentModal.classList.remove('active');
+        });
+        
+        // Close modal when clicking outside
+        paymentModal.addEventListener('click', function(e) {
+            if (e.target === paymentModal) {
+                paymentModal.classList.remove('active');
+            }
+        });
+        
+        // Show eSewa QR code
+        esewaBtn.addEventListener('click', function() {
+            esewaQr.style.display = 'block';
+            khaltiQr.style.display = 'none';
+            
+            // Update QR code with selected amount
+        const esewaImg = esewaQr.querySelector('img');
+    esewaImg.src = 'img/esewa.jpg'; // Static image path
+});
+        
+        // Show Khalti QR code
+        khaltiBtn.addEventListener('click', function() {
+            khaltiQr.style.display = 'block';
+            esewaQr.style.display = 'none';
+            
+            // Update QR code with selected amount
+            const khaltiImg = khaltiQr.querySelector('img');
+            khaltiImg.src = `img/khalti.jpg`;
+        });
+
+        // Initialize with default system
+        window.addEventListener('load', function() {
+            gradingSystemSelect.dispatchEvent(new Event('change'));
+            // Select first donation card by default
+            donationCards[0].classList.add('selected');
+        });
+    </script>
+</body>
+</html>
