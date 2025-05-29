@@ -65,11 +65,10 @@
         }
         
         h1 {
-            color: var(--primary);
+            color: white;
             font-size: 1.8rem;
             margin-bottom: 10px;
             background: linear-gradient(45deg, var(--nepal-red), var(--nepal-blue));
-            -webkit-background-sclip: text;
             line-height: 1.3;
         }
         
